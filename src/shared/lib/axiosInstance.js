@@ -1,17 +1,19 @@
 import axios from "axios";
-import { getCookie } from "./cookieUtils";
+import { getCookie } from "@/shared/utils/getCookie";
 
 const axiosInstance = axios.create({
-    baseUrl: process.env.BACKEND_URL,
+    baseURL: "http://localhost:8080",
     withCredentials: true,
 });
 
 axiosInstance.interceptors.request.use(
     async (config) => {
-        const token = getCookie("token");
+        const token = getCookie("jwt");
         if (token) {
             config.headers["Authorization"] = `Bearer ${token}`;
         }
+
+        return config;
     }
 )
 
