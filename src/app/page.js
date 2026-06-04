@@ -1,8 +1,9 @@
 "use client";
 import { loginUser, registerUser } from "@/entities/user/api";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { InputField } from "@/shared/ui/input-field/input-field";
 import Button from "@/shared/ui/button/button";
+import { getCookie } from "@/shared/utils/getCookie";
 
 export default function Home() {
   const [loginUsername, setLoginUsername] = useState("");
@@ -10,6 +11,7 @@ export default function Home() {
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [loginmode, setLoginMode] = useState(true);
+  const [ready, setReady] = useState(false);
 
   async function login() {
     let token = (await loginUser({ username: loginUsername, password: loginPassword })).data;
@@ -24,6 +26,26 @@ export default function Home() {
     let user = (await registerUser({ username: registerUsername, password: registerPassword })).data;
     console.log(user);
   }
+
+  useEffect(() => {
+    let token = getCookie("jwt");
+    if (token) {
+      window.location.replace("/projects");
+      return;
+    }
+    setReady(true);
+  })
+
+  if (!ready) {
+    return (
+      <div className="w-full h-[100vh] flex items-center pt-20 pr-30 pl-30 bg-zinc-50 flex flex-col gap-y-40">
+        <div className="flex flex-col items-center gap-2">
+          <h1 className="text-3xl text-black">Loading...</h1>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans">
       <main className="flex flex-col items-center w-full p-5 max-w-3xl flex-row border-2 border-[#6528FF] rounded-lg">
