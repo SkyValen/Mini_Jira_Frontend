@@ -28,8 +28,13 @@ export function NavPanel() {
                     </a>
                 </li>
                 <li>
-                    <a href="/sprints" className="text-[#6528FF] hover:underline">
+                    <a href={`/sprint?id=${id}`} className="text-[#6528FF] hover:underline">
                         Sprints
+                    </a>
+                </li>
+                <li>
+                    <a href={`/invite?id=${id}`} className="text-[#6528FF] hover:underline">
+                        Invites
                     </a>
                 </li>
             </ul>

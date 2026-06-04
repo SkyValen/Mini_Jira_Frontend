@@ -83,6 +83,9 @@ export function ExpandableListCard({
                                             Delete
                                         </button>
                                     ) : null}
+                                    {item.timeAgo ? (
+                                        <div className="text-xs text-zinc-500">{item.timeAgo}</div>
+                                    ) : null}
                                 </div>
                             </div>
                         </div>

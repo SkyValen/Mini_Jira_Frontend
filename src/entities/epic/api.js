@@ -9,5 +9,8 @@ export const getEpicById = (epicId, projectId) =>
 export const getEpicsByProject = (projectId) =>
 	axiosInstance.get(`/epic/project/${projectId}`);
 
+export const getEpicsBySprint = (projectId, sprintId) =>
+	axiosInstance.get(`/epic/project/${projectId}/sprint/${sprintId}`);
+
 export const deleteEpic = (epicId, projectId) =>
 	axiosInstance.delete(`/epic/${epicId}/project/${projectId}`);
