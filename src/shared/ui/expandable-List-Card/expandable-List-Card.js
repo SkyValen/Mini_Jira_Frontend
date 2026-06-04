@@ -26,7 +26,7 @@ export function ExpandableListCard({
     }
 
     return (
-        <div className="w-full">
+        <div className="w-full z-10">
             <ListCard
                 content={
                     <div className="">

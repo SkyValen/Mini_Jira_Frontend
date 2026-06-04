@@ -236,12 +236,12 @@ export default function TasksPage() {
     } else if (viewMode === "epic") {
         return (
             <div className="w-full h-[100vh] flex items-center pt-20 pr-30 pl-30 bg-zinc-50 flex flex-col gap-y-40">
-                <h1 className="text-3xl text-black">Epic Creation Form (TODO)</h1>
+                <h1 className="text-3xl text-black">Epic Creation Form</h1>
                 <div className="flex flex-col w-full items-center gap-4">
                     <InputField placeholder="Task Title" value={newTitle} setValue={(value) => setNewTitle(value)} className="!bg-white !border-[#D7CFF4] !text-black !rounded-xl !py-2.5 !px-4 hover:border-[#6A4BD1] transition-colors" />
                     <InputField placeholder="Task Description" value={newDescription} setValue={(value) => setNewDescription(value)} className="!bg-white !border-[#D7CFF4] !text-black !rounded-xl !py-2.5 !px-4 hover:border-[#6A4BD1] transition-colors" />
                 </div>
-                <Button text={"Create Task"} func={handleCreateEpic} />
+                <Button text={"Create Epic"} func={handleCreateEpic} />
                 <Button text={"Back to List"} func={() => changeViewMode("list")} />
             </div>
         );
