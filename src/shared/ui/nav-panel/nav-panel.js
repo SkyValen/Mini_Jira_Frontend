@@ -14,7 +14,7 @@ export function NavPanel() {
         console.log(id);
     }, [id])
     return (
-        <div className="w-[20%] h-[100vh] border-r-4 border-[#6528FF] bg-zinc-50 p-4 flex flex-col items-start z-10 whitespace-pre-line">
+        <div className="fixed w-[20%] h-[100vh] border-r-4 border-[#6528FF] bg-zinc-50 p-4 flex flex-col items-start z-10 whitespace-pre-line">
             <h2 className="text-2xl font-bold mb-4 text-[#6528FF]">{"Navigation\n panel"}</h2>
             <ul className="space-y-5">
                 <li>
