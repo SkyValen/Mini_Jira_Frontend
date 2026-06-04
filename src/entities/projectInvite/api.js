@@ -1,7 +1,7 @@
 import axiosInstance from "@/shared/lib/axiosInstance";
 
-export const createInvite = (projectId, userId) =>
-	axiosInstance.post(`/invite/project/${projectId}/user/${userId}`);
+export const createInvite = (projectId, username) =>
+	axiosInstance.post(`/invite/project/${projectId}/user/${username}`);
 
 export const getUserInvites = () => axiosInstance.get("/invite/me");
 

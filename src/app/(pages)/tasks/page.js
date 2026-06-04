@@ -104,11 +104,13 @@ export default function TasksPage() {
             description: newDescription
         }).then((response) => {
             console.log("Task created:", response.data);
-            addToEpic(response.data.id, id, newTaskEpicId).then((res) => {
-                console.log("Task added to epic:", res.data);
-            }).catch((error) => {
-                console.error("Error adding task to epic:", error);
-            });
+            if (newTaskEpicId) {
+                addToEpic(response.data.id, id, newTaskEpicId).then((res) => {
+                    console.log("Task added to epic:", res.data);
+                }).catch((error) => {
+                    console.error("Error adding task to epic:", error);
+                });
+            }
             setNewTitle("");
             setNewDescription("");
             setNewTaskEpicId("");
