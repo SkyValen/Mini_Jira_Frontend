@@ -187,6 +187,13 @@ export default function TasksPage() {
                                 updateTaskStatus(task.id, status);
                             }}
                             onDelete={handleDeleteTask}
+                            epicOptions={epics}
+                            onAssignEpic={(task, epicId) => {
+                                if (!epicId) return;
+                                addToEpic(task.id, id, epicId)
+                                    .then(() => fetchData())
+                                    .catch((err) => console.error("Error assigning epic:", err));
+                            }}
                         />
                     </div>
 

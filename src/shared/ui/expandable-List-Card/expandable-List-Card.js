@@ -8,6 +8,8 @@ export function ExpandableListCard({
     statusOptions = [],
     onStatusChange,
     onDelete,
+    epicOptions = [],
+    onAssignEpic,
 }) {
     const [isExpanded, setIsExpanded] = useState(false);
     const toggleExpand = () => {
@@ -53,18 +55,35 @@ export function ExpandableListCard({
                                 ) : (
                                     <div className="text-sm text-zinc-600">{item.status}</div>
                                 )}
-                                {onDelete ? (
-                                    <button
-                                        type="button"
-                                        className="self-start rounded-md border border-red-500 px-3 py-1 text-sm text-red-500 transition-colors hover:bg-red-500 hover:text-white"
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            onDelete(item);
-                                        }}
-                                    >
-                                        Delete
-                                    </button>
-                                ) : null}
+                                <div className="flex items-center gap-2">
+                                    {epicOptions.length > 0 ? (
+                                        <select
+                                            className="rounded-md border border-[#D7CFF4] bg-white px-3 py-2 text-sm text-zinc-700"
+                                            value={item.epic ?? ""}
+                                            onChange={(e) => onAssignEpic?.(item, e.target.value)}
+                                            onClick={(e) => e.stopPropagation()}
+                                        >
+                                            <option value="">Assign to epic</option>
+                                            {epicOptions.map((epic) => (
+                                                <option key={epic.id} value={epic.id}>
+                                                    {epic.title}
+                                                </option>
+                                            ))}
+                                        </select>
+                                    ) : null}
+                                    {onDelete ? (
+                                        <button
+                                            type="button"
+                                            className="self-start rounded-md border border-red-500 px-3 py-1 text-sm text-red-500 transition-colors hover:bg-red-500 hover:text-white"
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                onDelete(item);
+                                            }}
+                                        >
+                                            Delete
+                                        </button>
+                                    ) : null}
+                                </div>
                             </div>
                         </div>
                     ))}
