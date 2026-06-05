@@ -18,11 +18,12 @@ axiosInstance.interceptors.request.use(
 )
 
 axiosInstance.interceptors.response.use(
-    (response) => {return response},
+    (response) => { return response },
     (error) => {
         if (error.response && error.response.status === 401) {
             // Handle unauthorized access, e.g., redirect to login page
             console.error("Unauthorized access - redirecting to login");
+            document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
             window.location.href = "/";
         }
         return Promise.reject(error);
