@@ -14,3 +14,6 @@ export const getEpicsBySprint = (projectId, sprintId) =>
 
 export const deleteEpic = (epicId, projectId) =>
 	axiosInstance.delete(`/epic/${epicId}/project/${projectId}`);
+
+export const assignEpicToSprint = (epicId, projectId) =>
+	axiosInstance.patch(`/epic/${epicId}/project/${projectId}`)
